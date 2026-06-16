@@ -1,0 +1,81 @@
+# DBHub 多数据库配置文件
+# 文档: https://dbhub.ai/config/toml.md
+#
+# 使用方式:
+#   cp dbhub.toml.example dbhub.toml   # 复制后填入真实连接信息(dbhub.toml 已被 gitignore)
+#   cp .env.example .env               # 填入数据库密码(dbhub.toml 中 ${VAR} 会被替换)
+#
+# 说明:
+# 1. 在容器内连接宿主机的 MySQL 时, host 使用 host.docker.internal
+# 2. 支持环境变量插值, 格式 ${VAR_NAME}
+# 3. 修改本文件后 DBHub 会自动热重载 (约 500ms)
+
+# ---------------- 数据源定义 ----------------
+
+[[sources]]
+id = "app_main_hot"
+description = "app_main hot 环境 MySQL"
+type = "mysql"
+host = "your-mysql-host"
+port = 3306
+database = "app_main"
+user = "dbuser"
+password = "${HOT_MYSQL_PASSWORD}"
+connection_timeout = 30
+query_timeout = 30
+lazy = true
+
+[[sources]]
+id = "app_conf_hot"
+description = "app_conf hot 环境 MySQL"
+type = "mysql"
+host = "your-mysql-host"
+port = 3306
+database = "app_conf"
+user = "dbuser"
+password = "${HOT_MYSQL_PASSWORD}"
+connection_timeout = 30
+query_timeout = 30
+lazy = true
+
+[[sources]]
+id = "app_main_qat"
+description = "app_main qat 环境 MySQL"
+dsn = "mysql://dbuser:${QAT_MYSQL_PASSWORD}@your-qat-host:3306/app_main"
+connection_timeout = 30
+query_timeout = 30
+lazy = true
+
+[[sources]]
+id = "app_conf_qat"
+description = "app_conf qat 环境 MySQL"
+dsn = "mysql://dbuser:${QAT_MYSQL_PASSWORD}@your-qat-host:3306/app_conf"
+connection_timeout = 30
+query_timeout = 30
+lazy = true
+
+# ---------------- 工具配置 (按数据源分别设置只读/行数限制) ----------------
+
+[[tools]]
+name = "execute_sql"
+source = "app_main_hot"
+readonly = false
+max_rows = 5000
+
+[[tools]]
+name = "execute_sql"
+source = "app_main_qat"
+readonly = true
+max_rows = 5000
+
+[[tools]]
+name = "execute_sql"
+source = "app_conf_qat"
+readonly = true
+max_rows = 5000
+
+[[tools]]
+name = "execute_sql"
+source = "app_conf_hot"
+readonly = false
+max_rows = 5000

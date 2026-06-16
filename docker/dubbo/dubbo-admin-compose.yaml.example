@@ -1,0 +1,16 @@
+
+services:
+  dubbo-admin:
+    image: apache/dubbo-admin:0.6.0
+    container_name: dubbo-admin
+    ports:
+      # dubbo-admin启动后通过38080端口对外提供服务
+      - "38080:38080"
+    environment:
+      # 下面的ip端口配置修改为你们想要连接的dubbo集群的zk的ip端口
+      - admin.registry.address=zookeeper://your-zk-host:2181
+      - admin.config-center=zookeeper://your-zk-host:2181
+      - admin.metadata-report.address=zookeeper://your-zk-host:2181
+    # volumes:
+    #   - ./application.yml:/home/dubbo/apache-dubbo-admin/conf/application.yml
+    restart: unless-stopped

@@ -1,0 +1,31 @@
+
+services:
+  moltbot-gateway:
+    image: openclaw:local
+    container_name: moltbot-gateway
+    restart: unless-stopped
+    ports:
+      - "18789:18789"
+    volumes:
+      - ./config:/home/node/.clawdbot
+      - ./config:/home/node/.openclaw
+    #  - ./config:/home/node/.moltbot
+      - ./data:/home/node/clawd
+    environment:
+      - OPENCLAW_GATEWAY_MODE=local
+      - OPENCLAW_GATEWAY_TOKEN=your-gateway-token
+    #  - HTTP_PROXY=http://your-proxy-host:2081
+    #  - HTTPS_PROXY=http://your-proxy-host:2081
+    #  - NO_PROXY="localhost,127.0.0.1,::1"
+    shm_size: 2g
+    command: node /app/dist/index.js gateway --port 18789 --allow-unconfigured
+
+  moltbot-cli:
+    image: openclaw:local
+    container_name: moltbot-cli
+    network_mode: "service:moltbot-gateway"
+    volumes:
+      - ./config:/home/node/.clawdbot
+    #   - ./config:/home/node/.moltbot
+      - ./data:/home/node/clawd
+    entrypoint: ["node", "dist/index.js"]

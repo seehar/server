@@ -1,2 +1,14 @@
 .idea
 .vscode
+.DS_Store
+
+# 本地真实配置(含内网 IP / 密码 / 密钥),仅本地保留,仓库提交对应 .example 模板
+docker/dbhub/.env
+docker/dbhub/dbhub.toml
+docker/outline/docker.env
+docker/dubbo/dubbo-admin-compose.yaml
+docker/openClaw/moltbot/docker-compose.yml
+
+# Redis 运行时数据快照
+docker/redis/data/
+
