@@ -1,0 +1,240 @@
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[colors.bright]
+black = "#4d4d4d"
+blue = "#a277ff"
+cyan = "#61ffca"
+green = "#61ffca"
+magenta = "#a277ff"
+red = "#ff6767"
+white = "#edecee"
+yellow = "#ffca85"
+
+[colors.cursor]
+cursor = "#a277ff"
+
+[colors.normal]
+black = "#110f18"
+blue = "#a277ff"
+cyan = "#61ffca"
+green = "#61ffca"
+magenta = "#a277ff"
+red = "#ff6767"
+white = "#edecee"
+yellow = "#ffca85"
+
+[colors.primary]
+background = "#15141b"
+foreground = "#edecee"
+
+[colors.search.focused_match]
+background = "#9F7AF5"
+foreground = "#ffffff"
+
+[colors.search.matches]
+background = "#ffffff"
+foreground = "#000000"
+
+[colors.selection]
+background = "#29263c"
+text = "CellForeground"
+
+[cursor.style]
+blinking = "On"
+shape = "Beam"
+
+[cursor.vi_mode_style]
+blinking = "Off"
+shape = "Block"
+
+[font]
+size = 12.5
+
+[font.bold]
+family = "Maple Mono Normal NL NF CN"
+style = "Regular"
+
+[font.bold_italic]
+family = "Maple Mono Normal NL NF CN"
+style = "Italic"
+
+[font.glyph_offset]
+x = 0
+y = 3
+
+[font.italic]
+family = "Maple Mono Normal NL NF CN"
+style = "Italic"
+
+[font.normal]
+family = "Maple Mono Normal NL NF CN"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[[keyboard.bindings]]
+chars = "\f"
+key = "R"
+mode = "~Vi|~Search"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "ClearHistory"
+key = "R"
+mode = "~Vi|~Search"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "Quit"
+key = "W"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "N"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bb"
+key = "Left"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bf"
+key = "Right"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0001\u0001"
+key = "Left"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0005"
+key = "Right"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0015"
+key = "Back"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B\u007F"
+key = "Back"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0001c"
+key = "T"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0001&"
+key = "W"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0001p"
+key = "["
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0001n"
+key = "]"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0001p"
+key = "{"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0001n"
+key = "}"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u00011"
+key = "Key1"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00012"
+key = "Key2"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00013"
+key = "Key3"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00014"
+key = "Key4"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00015"
+key = "Key5"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00016"
+key = "Key6"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00017"
+key = "Key7"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00018"
+key = "Key8"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00019"
+key = "Key9"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "ReceiveChar"
+key = "Back"
+
+[general]
+live_config_reload = true
+
+[terminal]
+
+[scrolling]
+history = 100000
+multiplier = 4
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = """,│`|:"' ()[]{}<>"""
+
+[terminal.shell]
+args = ["--login", "--command", "tmux new-session -A -D -s main"]
+program = "/opt/homebrew/bin/fish"
+
+[window]
+blur = true
+decorations = "transparent"
+dynamic_padding = true
+opacity = 0.92
+
+[window.dimensions]
+columns = 106
+lines = 25
+
+[window.padding]
+x = 20
+y = 22
+
+[keyboard]
